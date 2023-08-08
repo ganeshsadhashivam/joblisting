@@ -1,0 +1,45 @@
+div {
+  display: flex;
+  width: 100vw;
+}
+
+#left {
+  width: 50%;
+}
+
+#left div {
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  margin: 5rem;
+}
+
+#left div input {
+  width: 400px;
+  margin: 1rem;
+  padding: 1rem;
+}
+
+#left div button {
+  width: 150px;
+  color: white;
+  background: rgba(237, 83, 83, 1);
+  padding: 0.5rem;
+  border: none;
+}
+#right {
+  width: 50%;
+}
+
+#right h3 {
+  position: absolute;
+  color: white;
+  top: 5rem;
+  right: 20rem;
+  font-size: 2rem;
+}
+
+#right img {
+  width: 50vw;
+  height: 100vh;
+}
