@@ -6,7 +6,9 @@
 #Registration-left {
   width: 50%;
 }
-
+#checkbox {
+  background-color: blue;
+}
 #Registration-left div {
   display: flex;
   flex-direction: column;
@@ -29,17 +31,17 @@
 }
 #Registration-right {
   width: 50%;
+  height: 100%;
 }
 
 #Registration-right h3 {
   position: absolute;
   color: white;
-  top: 5rem;
+  top: 70rem;
   right: 20rem;
   font-size: 2rem;
 }
 
 #Registration-right img {
-  width: 50vw;
-  height: 100vh;
+  width: 100%;
 }

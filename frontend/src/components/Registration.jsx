@@ -12,16 +12,18 @@ const Registration = () => {
           <input type="text" placeholder="Email" />
           <input type="text" placeholder="Mobile" />
           <input type="text" placeholder="Password" />
-          <label
-            htmlFor="
+          <span>
+            <label
+              htmlFor="
           "
-          >
-            <p>
-              By creating an account, I agree to our terms of use and privacy
-              policy
-            </p>
-          </label>
-          <input type="checkbox" name="" id="" />
+            >
+              <input type="checkbox" name="" id="checkbox" />
+              <p>
+                By creating an account, I agree to our terms of use and privacy
+                policy
+              </p>
+            </label>
+          </span>
           <button>Create Account</button>
           <p>
             Already have an account? <a href="">Sign In</a>

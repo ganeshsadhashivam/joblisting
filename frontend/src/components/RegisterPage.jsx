@@ -3,8 +3,8 @@ import RegisterPageImage from "../assets/image 466.png";
 import "../components/RegisterPage.css";
 const RegisterPage = () => {
   return (
-    <div>
-      <section id="left">
+    <div className="Register-page">
+      <section id="Register-page-left">
         <div>
           <h1>Already have an account?</h1>
           <p>Your personal job finder is here</p>
@@ -16,7 +16,7 @@ const RegisterPage = () => {
           </p>
         </div>
       </section>
-      <section id="right">
+      <section id="Register-page-right">
         <h3>Your Personal Job Finder</h3>
         <img src={RegisterPageImage} alt="" />
       </section>
