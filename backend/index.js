@@ -4,6 +4,8 @@ const bodyParser = require("body-parser");
 
 const mongoose = require("mongoose");
 
+const cors = require("cors");
+
 const dotenv = require("dotenv");
 dotenv.config();
 
@@ -12,6 +14,7 @@ const app = express();
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
 
+app.use(cors());
 // parse application/json
 app.use(bodyParser.json());
 
@@ -78,6 +81,6 @@ mongoose
 //   res.download(__dirname + "/pentol-stiker-pentol.gif");
 // });
 
-app.listen(3000, () => {
+app.listen(3001, () => {
   console.log("server running on http://localhost:3000");
 });
