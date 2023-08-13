@@ -1,6 +1,6 @@
 import React from "react";
 import RegisterPageImage from "../assets/image 466.png";
-import "../components/Registration.css";
+import "../components/Registrationmodule.css";
 const Registration = () => {
   return (
     <div className="Registration">

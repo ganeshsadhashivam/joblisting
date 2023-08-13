@@ -1,13 +1,22 @@
 import logo from "./logo.svg";
 import "./App.css";
-import RegisterPage from "./components/RegisterPage";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Login from "./components/Login";
 import Registration from "./components/Registration";
+import Home from "./components/Home";
+import AddJobDescription from "./components/AddJobDescription";
 
 function App() {
   return (
     <div className="App">
-      <RegisterPage />
-      <Registration />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Registration />} />
+          <Route path="/addjob" element={<AddJobDescription />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
