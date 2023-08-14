@@ -1,7 +1,7 @@
 import asyncHandler from "express-async-handler";
 import generateToken from "../utils/generateToken.js";
 import User from "../models/userModel.js";
-
+import Jobs from "../models/jobPostModel.js";
 //@desc Auth user/set token
 //route POST /api/users/auth
 //@access Public
@@ -62,6 +62,57 @@ const registerUser = asyncHandler(async (req, res) => {
   }
 });
 
+const newJobPost = () =>
+  asyncHandler(async (req, res) => {
+    const {
+      companyName,
+      logoUrl,
+      jobPosition,
+      monthlySalary,
+      jobType,
+      remoteOrOffice,
+      location,
+      jobDescription,
+      aboutCompany,
+      skillsRequired,
+      information,
+    } = req.body;
+
+    const jobs = await Jobs.create({
+      companyName,
+      logoUrl,
+      jobPosition,
+      monthlySalary,
+      jobType,
+      remoteOrOffice,
+      location,
+      jobDescription,
+      aboutCompany,
+      skillsRequired,
+      information,
+    });
+
+    if (jobs) {
+      res.status(201).json({
+        _id: jobs._id,
+        companyName: jobs.companyName,
+        logoUrl: jobs.logoUrl,
+        jobPosition: jobs.jobPosition,
+        monthlySalary: jobs.monthlySalary,
+        jobType: jobs.jobType,
+        remoteOrOffice: jobs.remoteOrOffice,
+        location: jobs.location,
+        jobDescription: jobs.jobDescription,
+        aboutCompany: jobs.aboutCompany,
+        skillsRequired: jobs.skillsRequired,
+        information: jobs.information,
+      });
+    } else {
+      res.status(400);
+      throw new Error("Job Post not created");
+    }
+  });
+
 //@desc Logout
 //route POST /api/users/logout
 //@access Public
@@ -121,4 +172,5 @@ export {
   logoutUser,
   getUserProfile,
   updateUserProfile,
+  newJobPost,
 };

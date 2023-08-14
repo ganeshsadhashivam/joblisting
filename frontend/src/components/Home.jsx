@@ -1,12 +1,25 @@
-import React from "react";
+import React, { useDebugValue } from "react";
 import { useEffect, useState } from "react";
 import "./HomeModule.css";
 import { useNavigate } from "react-router-dom";
 
 import { FiSearch } from "react-icons/fi";
+import { useDispatch, useSelector } from "react-redux";
+
+import Avatar from "../assets/michael-dam-mEZ3PoFGs_k-unsplash.jpg";
+import { useLogoutMutation } from "../slices/usersApiSlice";
+import { logout } from "../slices/authSlice";
+
 const Home = () => {
   const [skillset, setSkillSet] = useState("");
   const navigate = useNavigate();
+
+  const { userInfo } = useSelector((state) => state.auth);
+
+  const dispatch = useDispatch();
+
+  const [logoutApiCall] = useLogoutMutation();
+
   const loginPage = () => {
     navigate("/login");
   };
@@ -22,6 +35,16 @@ const Home = () => {
   };
 
   console.log(skillset);
+
+  const logoutHandler = async () => {
+    try {
+      await logoutApiCall().unwrap();
+      dispatch(logout());
+      navigate("/");
+    } catch (err) {
+      console.log(err.error);
+    }
+  };
 
   //   const createSelectedSkills = (props) => {
   //     console.log("hi");
@@ -39,11 +62,26 @@ const Home = () => {
         <div id="logo-text">
           <a href="/home">Jobfinder</a>
         </div>
-
-        <div className="buttons">
-          <button onClick={() => loginPage()}>Login</button>
-          <button onClick={() => registerPage()}>Register</button>
-        </div>
+        {userInfo ? (
+          <div className="user-info-section">
+            <div>
+              <button id="logout" onClick={() => logoutHandler()}>
+                Logout
+              </button>
+            </div>
+            <div>
+              <p id="user-name">Hello! {userInfo.name}</p>
+            </div>
+            <div>
+              <img id="avatar" src={Avatar} alt="" />
+            </div>
+          </div>
+        ) : (
+          <div className="buttons">
+            <button onClick={() => loginPage()}>Login</button>
+            <button onClick={() => registerPage()}>Register</button>
+          </div>
+        )}
       </header>
       <section className="search-section">
         <div>

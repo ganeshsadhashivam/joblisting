@@ -1,6 +1,6 @@
-/* * {
+* {
   box-sizing: border-box;
-} */
+}
 
 .add-job-page {
   display: flex;
@@ -21,24 +21,84 @@
   height: 100vh;
 }
 
-#add-job-left input {
-  /* display: flex;
-  justify-content: center;
-  width: 50%;
-  margin: 0 0 0 1rem; */
-  display: flex;
-  justify-content: space-evenly;
-  margin: 0 0 0 1rem;
-  width: 400px;
-  padding: 0.5rem;
+.job-inputs {
+  text-align: center;
 }
 
-#add-job-left label {
+.job-inputs h1 {
+  margin-bottom: 0;
+}
+
+.job-inputs div {
+  /* width: 100%;
   display: flex;
-  justify-content: space-evenly;
-  /*flex-direction: row;*/
-  margin: 1rem;
-  width: 800px;
+  flex-direction: column;
+  flex-wrap: wrap; */
+  display: grid;
+  grid-template-columns: 300px 350px;
+  margin: 0.5rem;
+  padding: 0.5rem;
+  /* height: 100vh; */
+}
+
+.job-inputs label {
+  display: inline;
+  flex-direction: row;
+  /* width: 200px; */
+}
+
+.job-inputs input {
+  box-sizing: border-box;
+  display: inline;
+  flex-direction: row;
+  /* width: 300px; */
+}
+
+.input-and-labels {
+}
+
+.add-job-descrption-buttons div {
+  display: flex;
+  justify-content: end;
+}
+
+#cancel {
+  background: transparent;
+  padding: 0.5rem;
+  margin-right: 3rem;
+  width: 100px;
+  border: 1px solid rgb(194, 193, 193);
+}
+
+#addjob {
+  background: rgba(237, 83, 83, 1);
+  color: white;
+  padding: 0.5rem;
+  width: 100px;
+  margin-right: 1rem;
+  border: none;
+}
+
+/* #add-job-left input {
+  display: flex;
+  justify-content: center;
+  width: 50%;
+  margin: 0 0 0 1rem;
+  display: flex;
+  /* justify-content: space-evenly; */
+/* margin: 0 0 0 1rem;
+  width: 400px;
+  padding: 0.5rem; 
+} */
+
+#add-job-left label {
+  /* display: flex;
+  justify-content: space-evenly; */
+  /* flex-direction: row; */
+  /* margin: 1rem;
+  width: 800px; */
+  /* margin: 0 3rem 0rem 3rem;
+  padding: 1rem 0 1rem 0; */
 }
 
 /* #jobType {
@@ -47,4 +107,5 @@
 
 #joblocation {
   display: block;
-} */
+} 
+*/

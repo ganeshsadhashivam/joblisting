@@ -62,7 +62,7 @@ header {
   margin: 1rem 0rem 0rem 0rem;
 }
 
-select {
+#skills {
   padding: 0.5rem;
   font-size: 1rem;
 }
@@ -84,4 +84,32 @@ select {
   color: rgba(237, 83, 83, 1);
   margin: 1rem 0 0 0;
   font-size: 1.2rem;
+}
+
+.user-info-section {
+  display: flex;
+}
+
+/* .user-info-section div {
+  display: flex;
+  justify-content: space-around;
+} */
+
+#logout {
+  background: transparent;
+  color: white;
+  border: none;
+}
+
+#user-name {
+  font-size: 1.2rem;
+  padding: 0 5rem 0 4rem;
+  margin: 0;
+  color: white;
+}
+
+#avatar {
+  width: 5vw;
+  border-radius: 50%;
+  height: 10vh;
 }
