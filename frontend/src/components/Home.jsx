@@ -7,17 +7,35 @@ import { FiSearch } from "react-icons/fi";
 import { useDispatch, useSelector } from "react-redux";
 
 import Avatar from "../assets/michael-dam-mEZ3PoFGs_k-unsplash.jpg";
-import { useLogoutMutation } from "../slices/usersApiSlice";
+import { useJobsMutation, useLogoutMutation } from "../slices/usersApiSlice";
 import { logout } from "../slices/authSlice";
 
 const Home = () => {
+  const [alljobs, setAllJobs] = useState([]);
   const [skillset, setSkillSet] = useState("");
   const navigate = useNavigate();
 
+  const [jobs, { isLoading }] = useJobsMutation();
   const { userInfo } = useSelector((state) => state.auth);
+
+  const { jobsInfo } = useSelector((state) => state.auth);
 
   const dispatch = useDispatch();
 
+  const loadJobs = async () => {
+    try {
+      console.log("load jobs");
+      setAllJobs(await jobs().unwrap());
+      dispatch(jobs());
+    } catch (err) {
+      console.log(err.error);
+    }
+  };
+
+  useEffect(() => {
+    loadJobs();
+  }, []);
+  console.log(alljobs);
   const [logoutApiCall] = useLogoutMutation();
 
   const loginPage = () => {
@@ -44,6 +62,10 @@ const Home = () => {
     } catch (err) {
       console.log(err.error);
     }
+  };
+
+  const viewJobDetails = () => {
+    navigate("/jobdetails");
   };
 
   //   const createSelectedSkills = (props) => {
@@ -121,6 +143,66 @@ const Home = () => {
             </div>
           </div>
         </div>
+      </section>
+      <section className="jobs-section">
+        {alljobs.map((job) => {
+          const {
+            companyName,
+            logoUrl,
+            jobPosition,
+            monthlySalary,
+            jobType,
+            remoteOrOffice,
+            location,
+            jobDescription,
+            aboutCompany,
+            skillsRequired,
+            information,
+          } = job;
+          return (
+            <>
+              <div className="job-logo-position-skills">
+                <div>
+                  <img src={logoUrl} alt="googlelogo" id="companylogo" />
+                </div>
+                <div>
+                  <p>{jobPosition}</p>
+                </div>
+                <div className="skills">
+                  <button>{skillsRequired.substring(0, 3)}</button>
+                  <button>{skillsRequired.substring(4, 8)}</button>
+                  <button>{skillsRequired.substring(9, 18)}</button>
+                </div>
+              </div>
+              <div className="job-salary-location">
+                <div>
+                  <div>₹ {monthlySalary}</div>
+                </div>
+                <div>
+                  <div>{location}</div>
+                </div>
+              </div>
+              <div className="job-type-view-details">
+                <div id="remoteoroffice">
+                  <div>
+                    <div id="remote-office">{remoteOrOffice}</div>
+                  </div>
+                  <div>
+                    <div id="contract">{jobType}</div>
+                  </div>
+                </div>
+                <div>
+                  <button
+                    className="viewDetails"
+                    onClick={() => viewJobDetails()}
+                  >
+                    view details
+                  </button>
+                </div>
+              </div>
+            </>
+          );
+        })}
       </section>
     </div>
   );

@@ -11,6 +11,7 @@ import Home from "./components/Home";
 import AddJobDescription from "./components/AddJobDescription";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import JobDetails from "./components/JobDetails";
 function App() {
   return (
     <div className="App">
@@ -22,6 +23,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Registration />} />
             <Route path="/addjob" element={<AddJobDescription />} />
+            <Route path="/jobdetails" element={<JobDetails />} />
           </Routes>
         </BrowserRouter>
       </Provider>
