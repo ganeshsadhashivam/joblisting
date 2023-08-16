@@ -16,6 +16,7 @@ const JobDetails = () => {
   const [jobs, { isLoading }] = useJobsMutation();
   const { userInfo } = useSelector((state) => state.auth);
 
+  console.log(userInfo);
   const { jobsInfo } = useSelector((state) => state.auth);
 
   const dispatch = useDispatch();
@@ -124,16 +125,53 @@ const JobDetails = () => {
             return (
               <div>
                 <div className="date-jobtype">
-                  <div>
+                  {/* <div>
                     <p>{updatedAt}</p>
-                  </div>
-                  <div>
+                  </div> */}
+                  {userInfo ? (
+                    <>
+                      <div>
+                        <p>{updatedAt}</p>
+                      </div>
+                      <div>
+                        <p>{jobType}</p>
+                      </div>
+                      <div>
+                        <img src={logoUrl} alt="companylogo" width={"50px"} />
+                      </div>
+                      <div>
+                        <p>{companyName}</p>
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      <div>
+                        <p>{updatedAt}</p>
+                      </div>
+                      <div>
+                        <p>{jobType}</p>
+                      </div>
+                    </>
+                  )}
+                  {/* <div>
                     <p>{jobType}</p>
-                  </div>
+                  </div> */}
                 </div>
                 <div>
-                  <div>
+                  <div
+                    style={{
+                      display: "flex",
+                      justifyContent: "space-between",
+                    }}
+                  >
                     <p id="job-position">{jobPosition} </p>
+                    {userInfo ? (
+                      <div>
+                        <button id="editjob">Edit Job</button>
+                      </div>
+                    ) : (
+                      ""
+                    )}
                   </div>
                   <div>{location}</div>
                 </div>

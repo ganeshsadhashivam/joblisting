@@ -55,12 +55,14 @@ header {
 #job-position {
   font-size: 1.5rem;
   font-weight: bold;
+  margin: 0;
 }
 
 .date-jobtype {
   display: flex;
-  width: 300px;
-  justify-content: space-between;
+  width: 500px;
+  justify-content: space-evenly;
+  /* margin-right: 20rem; */
 }
 #skills-required {
   display: flex;
@@ -73,6 +75,16 @@ header {
   border-radius: 50px;
   width: 100px;
   text-align: center;
+}
+
+#editjob {
+  background: rgba(237, 83, 83, 1);
+  color: white;
+  width: 100px;
+  padding: 0.5rem;
+  margin: 0.5rem;
+  border: none;
+  border-radius: 5px;
 }
 
 /* .search-section {
