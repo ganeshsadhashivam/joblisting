@@ -30,6 +30,13 @@ export const usersApiSlice = apiSlice.injectEndpoints({
         method: "GET",
       }),
     }),
+    addnewjobpost: builder.mutation({
+      query: (data) => ({
+        url: `${USERS_URL}/newjobpost`,
+        method: "POST",
+        body: data,
+      }),
+    }),
   }),
 });
 
@@ -38,4 +45,5 @@ export const {
   useLogoutMutation,
   useRegisterMutation,
   useJobsMutation,
+  useAddnewjobpostMutation,
 } = usersApiSlice;

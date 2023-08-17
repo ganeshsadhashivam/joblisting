@@ -1,8 +1,51 @@
-import React from "react";
+import React, { useState } from "react";
 import AddJobPageBackround from "../assets/WallpaperDog-20567151 1.png";
 
 import "./AddJobDescriptionmodule.css";
+
+import { useAddnewjobpostMutation } from "../slices/usersApiSlice";
+import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
 const AddJobDescription = () => {
+  const [companyname, setCompanyName] = useState("");
+  const [logourl, setLogoUrl] = useState("");
+  const [jobposition, setJobPosition] = useState("");
+  const [monthlysalary, setMonthlySalary] = useState("");
+  const [jobtype, setJobType] = useState("");
+  const [remoteoroffice, setRemoteOrOffce] = useState("");
+  const [location, setLocation] = useState("");
+  const [jobdescription, setJobDescription] = useState("");
+  const [aboutcompany, setAboutCompany] = useState("");
+  const [skills, setSkills] = useState("");
+  const [information, setInformation] = useState("");
+
+  const dispatch = useDispatch();
+
+  const [addNewJob, { isLoading }] = useAddnewjobpostMutation();
+  const addJobDetails = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await addNewJob({
+        companyname,
+        logourl,
+        jobposition,
+        monthlysalary,
+        jobtype,
+        remoteoroffice,
+        location,
+        jobdescription,
+        aboutcompany,
+        skills,
+        information,
+      }).unwrap();
+      dispatch(addNewJob({ res }));
+      // navigate("/");
+      console.log("job added");
+    } catch (err) {
+      toast.error(err?.data?.message || err.error);
+    }
+  };
+
   return (
     <section>
       <div className="add-job-page">
@@ -92,7 +135,9 @@ const AddJobDescription = () => {
             <div className="add-job-descrption-buttons">
               <div>
                 <button id="cancel">cancel</button>
-                <button id="addjob">+Add Job</button>
+                <button id="addjob" onClick={(e) => addJobDetails(e)}>
+                  +Add Job
+                </button>
               </div>
             </div>
           </form>

@@ -68,6 +68,10 @@ const Home = () => {
     navigate("/jobdetails");
   };
 
+  const addJobPage = () => {
+    navigate("/addjob");
+  };
+
   //   const createSelectedSkills = (props) => {
   //     console.log("hi");
   //     //   <div id="createSelectedSkillsId">{props}</div>;
@@ -134,12 +138,25 @@ const Home = () => {
               </select>
             </div>
             <div>
-              {/* {skillset.map((value) => {
+              <div>
+                {userInfo ? (
+                  <div>
+                    <button className="add-job" onClick={() => addJobPage()}>
+                      +AddJob
+                    </button>
+                  </div>
+                ) : (
+                  ""
+                )}
+              </div>
+              <div>
+                {/* {skillset.map((value) => {
               return <div className="createSelectedSkillsId"> {value}</div>;
             })} */}
-            </div>
-            <div>
-              <button id="clear">clear</button>
+              </div>
+              <div>
+                <button id="clear">clear</button>
+              </div>
             </div>
           </div>
         </div>
